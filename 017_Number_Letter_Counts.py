@@ -22,10 +22,6 @@ def number_to_word(num):
     Function converts a number into the word representation of that number. Function
     only goes up to 1000
     """
-    """
-    Num a -> [Num a]
-    This function creates a list of the numbers that come appear in a Collatz Sequence.
-    """
     if num == 0:
         return ''
     elif num >= 1 and num < 20:
@@ -36,10 +32,6 @@ def number_to_word(num):
         return ones[num/100] + "hundred"
     elif num >= 100 and num <= 999:
         return ones[num/100] + "hundredand" + number_to_word(num % 100)
-    # elif num >= 100 and num < 999 and num % 100 < 20:
-    #     return ones[num/100] + number_to_word(num % 100)
-    # elif num >= 100 and num < 999 and num % 100 > 20:
-    #     return ones[num/100] + number_to_word(num % 100)
     else:
         return "onethousand"
 
@@ -48,6 +40,11 @@ def add_word_numbers(num):
     num_string = concat([number_to_word(i) for i in xrange(num+1)])
     return concat([number_to_word(i) for i in xrange(num+1)])
 
+def add_word_numbers2(num):
+    numbers = [i for i in xrange(num+1)]
+    num_string = concat(map(number_to_word,numbers))
+    return num_string
+
 if __name__ == "__main__":
-    number_string = add_word_numbers(1000)
+    number_string = add_word_numbers2(1000)
     print(len(number_string))
