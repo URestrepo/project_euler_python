@@ -24,6 +24,9 @@ def fib_generator(n):
         yield fib_first
         fib_first, fib_second = fib_second, fib_first + fib_second
 
-k = [x for x in fib_generator(4000000)]
-k_even = list(filter(lambda x : x % 2 == 0, k))
-print(sum(k_even))
+
+if __name__ == "__main__":
+    k = list(fib_generator(4000000))
+    # k = [x for x in fib_generator(4000000)]
+    k_even = list(filter(lambda x : x % 2 == 0, k))
+    print(sum(k_even))
