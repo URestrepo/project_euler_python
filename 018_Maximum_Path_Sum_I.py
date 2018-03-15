@@ -32,4 +32,46 @@ NOTE: As there are only 16384 routes, it is possible to solve this problem by tr
 
 """
 from io_library import read_data
+from math_library import concat
+
+def reduce_max(lst1,lst2):
+        # if len(lst1) != len(lst2)-1:
+            # print("One of the lists is too long. Try switching")
+        # else:
+        if len(lst1) == 1:
+            return lst1[0]
+        else:
+            print([max(lst2[i]+lst1[i],lst2[i]+lst1[i+1]) for i, item in enumerate(lst2)])
+            return [max(lst2[i]+lst1[i],lst2[i]+lst1[i+1]) for i, item in enumerate(lst2)]
+
+
+def reduce_max2(lst1,lst2):
+        # if len(lst1) != len(lst2)-1:
+            # print("One of the lists is too long. Try switching")
+        # else:
+        # if len(lst1) == 1:
+            # return lst1[0]
+        # else:
+            # print ([lst1[i]+lst2[i] if lst1[i]+lst2[i] > lst1[i]+lst2[i+1] else lst1[i]+lst2[i+1] for i, item in enumerate(lst1)])
+            # return [lst1[i]+lst2[i] if lst1[i]+lst2[i] > lst1[i]+lst2[i+1] else lst1[i]+lst2[i+1] for i, item in enumerate(lst1)]
+            print (max(lst1[i]+lst2[i], lst1[i]+lst2[i+1]) for i, item in enumerate(lst1)])
+            return [lst1[i]+lst2[i] if lst1[i]+lst2[i] > lst1[i]+lst2[i+1] else lst1[i]+lst2[i+1] for i, item in enumerate(lst1)]
+
+
+def intify(xss):
+    for item in xss:
+        splitify = item.split()
+        for num in splitify:
+            int(num)
+            
+
+if __name__ = "__main__":
+    data = read_data("Problem_18_data.txt")
+    # data_split = map(lambda x: map(x.split), data)
+    data_split = [concat([strings.split() for strings in row]) for row in data]
+    # data_split = map(lambda row: map(lambda x: x.split(), x), data) not working
+    triangle_nums = map(lambda d: map(int,d),data_split)
+    reduced_triangle = reduce(reduce_max, reversed(triangle_nums))
+    reduced_triangle2 = reduce(reduce_max2, triangle_nums)
+
 

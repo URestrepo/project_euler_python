@@ -78,16 +78,28 @@ def days_of_month(year,month):
         return 31
 
 def test_f(year,month):
+    """
+    Num year -> Num month -> num (28 or 29)
+    This function simply checks for a given year with the assumption that the month is 2
+    if the 
+    """
     if month == 2:
         if year % 4 == 0 and not (year % 100 == 0 and year % 400 != 0):
             return 29
         else:
             return 28
 
+def filter_years(start_year, xss):
+    years_to_eliminate = 1900-start_year
+    filter(lambda item: item[0] != year for year in irange(1900,start_year), xss)
+    # filter(lambda item: item[0] != year for year in irange(1900,start_year), xss)
+
+
 if __name__ == "__main__":
-    sundays = count_sundays(1900,2000)
-    num_sundays = len(sundays)
-    print("The number of 1st month Sundays in the years 1900 and including 2000 is " + str(num_sundays))
+    sundays = count_sundays(1900,2000)...
+    sundays_no_1900 = filter(lambda item: item[0] != year for year in range(1900,1901), sundays)
+    num_sundays = len(sundays_no_1900)
+    print("The number of 1st month Sundays in the years 1901 and including 2000 is " + str(num_sundays))
 
 
 
