@@ -35,43 +35,22 @@ from io_library import read_data
 from math_library import concat
 
 def reduce_max(lst1,lst2):
-        # if len(lst1) != len(lst2)-1:
-            # print("One of the lists is too long. Try switching")
-        # else:
-        if len(lst1) == 1:
-            return lst1[0]
-        else:
-            print([max(lst2[i]+lst1[i],lst2[i]+lst1[i+1]) for i, item in enumerate(lst2)])
-            return [max(lst2[i]+lst1[i],lst2[i]+lst1[i+1]) for i, item in enumerate(lst2)]
-
-
-def reduce_max2(lst1,lst2):
-        # if len(lst1) != len(lst2)-1:
-            # print("One of the lists is too long. Try switching")
-        # else:
-        # if len(lst1) == 1:
-            # return lst1[0]
-        # else:
-            # print ([lst1[i]+lst2[i] if lst1[i]+lst2[i] > lst1[i]+lst2[i+1] else lst1[i]+lst2[i+1] for i, item in enumerate(lst1)])
-            # return [lst1[i]+lst2[i] if lst1[i]+lst2[i] > lst1[i]+lst2[i+1] else lst1[i]+lst2[i+1] for i, item in enumerate(lst1)]
-            print (max(lst1[i]+lst2[i], lst1[i]+lst2[i+1]) for i, item in enumerate(lst1)])
-            return [lst1[i]+lst2[i] if lst1[i]+lst2[i] > lst1[i]+lst2[i+1] else lst1[i]+lst2[i+1] for i, item in enumerate(lst1)]
-
-
-def intify(xss):
-    for item in xss:
-        splitify = item.split()
-        for num in splitify:
-            int(num)
-            
+    """
+    Num [] -> Num [] -> Num []
+    This function takes in two lists of numbers with one list longer than the other by one.
+    reduce_max then adds takes in a value from the shorter list and adds that number to the two respective
+    nums in the larger list. It then keeps the greater of the two values using the max function.
+    """
+    return [max(lst2[i]+lst1[i],lst2[i]+lst1[i+1]) for i, item in enumerate(lst2)]
+      
 
 if __name__ = "__main__":
     data = read_data("Problem_18_data.txt")
     # data_split = map(lambda x: map(x.split), data)
-    data_split = [concat([strings.split() for strings in row]) for row in data]
-    # data_split = map(lambda row: map(lambda x: x.split(), x), data) not working
-    triangle_nums = map(lambda d: map(int,d),data_split)
+    # data_split = [concat([strings.split() for strings in row]) for row in data]
+    # triangle_nums = map(lambda d: map(int,d),data_split)
+    triangle_nums = [map(int, row[0].split()) for row in data]
     reduced_triangle = reduce(reduce_max, reversed(triangle_nums))
-    reduced_triangle2 = reduce(reduce_max2, triangle_nums)
+    ans = reduced_triangle[0]
 
 
