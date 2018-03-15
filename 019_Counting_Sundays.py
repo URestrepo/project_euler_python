@@ -15,20 +15,6 @@ You are given the following information, but you may prefer to do some research 
 How many Sundays fell on the first of the month during the twentieth century (1 Jan 1901 to 31 Dec 2000)?
 """
 
-"""
-
-for i in range 1900 and 2001:
-    if year % 4 == 0 and year % 
-
-    if month == 0,:
-        return 31
-    if month == 0:
-        return 31
-    if month == 0:
-        return 31
-
-
-"""
 
 def count_sundays(start_year,end_year):
     year = start_year
@@ -40,8 +26,6 @@ def count_sundays(start_year,end_year):
                 sundays.append((year,month))
             period += days_of_month(year, month)
     return sundays
-
-
 
 
 
@@ -89,15 +73,11 @@ def test_f(year,month):
         else:
             return 28
 
-def filter_years(start_year, xss):
-    years_to_eliminate = 1900-start_year
-    filter(lambda item: item[0] != year for year in irange(1900,start_year), xss)
-    # filter(lambda item: item[0] != year for year in irange(1900,start_year), xss)
-
 
 if __name__ == "__main__":
-    sundays = count_sundays(1900,2000)...
-    sundays_no_1900 = filter(lambda item: item[0] != year for year in range(1900,1901), sundays)
+    sundays = count_sundays(1900,2000)
+    years_of_interest = {year for year in range(1901,2000+1)}
+    sundays_no_1900 = filter(lambda item: item[0] in years_of_interest, sundays)
     num_sundays = len(sundays_no_1900)
     print("The number of 1st month Sundays in the years 1901 and including 2000 is " + str(num_sundays))
 
