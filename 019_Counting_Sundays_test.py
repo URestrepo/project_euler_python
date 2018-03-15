@@ -30,24 +30,59 @@ for i in range 1900 and 2001:
 
 """
 
+# def count_sundays(start_year,end_year):
+#     year = start_year
+#     period = 1
+#     sundays = list()
+#     m = 0
+#     d = ""
+#     for year in range(start_year,end_year+1):
+#         for month in range(1,12+1):
+#             m = days_of_month(year,month)
+#             if m == 29:
+#                 sundays.append(year)
+#             # for day in range(1,m):
+#                 # d = day_name(period)
+#                 # sundays.append((year,month,day))
+            
+#                 #period += days_of_month(year, month)
+#             # if period % 7 == 0:
+#             #     sundays.append((year,month))
+#     return sundays
+
+
 def count_sundays(start_year,end_year):
     year = start_year
     period = 1
     sundays = list()
+    m = 0
+    d = ""
     for year in range(start_year,end_year+1):
         for month in range(1,12+1):
-            if period % 7 == 0:
-                sundays.append((year,month))
-            period += days_of_month(year, month)
+            m = days_of_month(year,month)
+            # if m == 29:
+            sundays.append((year,month,m))
     return sundays
 
 
-
-
+def day_name(num):
+    if num % 7 == 1:
+        return "Monday"
+    if num % 7 == 2:
+        return "Tuesday"
+    if num % 7 == 3:
+        return "Wednesday"
+    if num % 7 == 4:
+        return "Thursday"
+    if num % 7 == 5:
+        return "Friday"
+    if num % 7 == 6:
+        return "Saturday"
+    if num % 7 == 0:
+        return "Sunday"
 
 def days_of_month(year,month):
     """
-
     """
     if month == 1:
         return 31
@@ -86,8 +121,9 @@ def test_f(year,month):
 
 if __name__ == "__main__":
     sundays = count_sundays(1900,2000)
-    num_sundays = len(sundays)
-    print("The number of 1st month Sundays in the years 1900 and including 2000 is " + str(num_sundays))
+    print(sundays)
+    # num_sundays = len(sundays)
+    # print("The number of 1st month Sundays in the years 1900 and including 2000 is " + str(num_sundays))
 
 
 
